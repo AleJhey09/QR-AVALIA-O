@@ -1,0 +1,23 @@
+# QR Avaliação — 56 QR Codes
+
+Site base:
+https://alejhey09.github.io/QR-AVALIA-O/
+
+QR Codes:
+https://alejhey09.github.io/QR-AVALIA-O/001 até https://alejhey09.github.io/QR-AVALIA-O/056
+
+## Como cadastrar um cliente
+
+1. Abra `destinations.json` no GitHub.
+2. Encontre o código, por exemplo `"001": ""`.
+3. Coloque o link de avaliação do Google entre as aspas:
+   `"001": "https://g.page/r/SEU-LINK/review"`
+4. Salve/commite a alteração.
+5. Aguarde a publicação do GitHub Pages.
+
+O QR impresso não precisa ser trocado: ele continua apontando para `/001`, `/002` etc.
+
+IMPORTANTE:
+- Não coloque senhas, tokens ou informações privadas no arquivo.
+- O repositório é público e os links cadastrados ficam visíveis no código.
+- O GitHub Pages pode levar alguns minutos para publicar uma alteração.

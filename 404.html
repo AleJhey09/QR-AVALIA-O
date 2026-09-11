@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QR Code</title>
+<style>
+body{font-family:Arial,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;margin:0;background:#f7f7f7;color:#222}
+.box{max-width:520px;padding:32px;background:#fff;border-radius:18px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+h1{font-size:24px}p{line-height:1.5}
+</style>
+</head>
+<body>
+<div class="box">
+<h1 id="title">QR Code</h1>
+<p id="msg">Aguarde...</p>
+</div>
+<script>
+(async function(){
+  const path = location.pathname.replace(/\/+$/,'');
+  const code = path.split('/').pop();
+  const valid = /^\d{3}$/.test(code) && Number(code)>=1 && Number(code)<=56;
+  if(!valid){
+    document.getElementById('title').textContent='Página não encontrada';
+    document.getElementById('msg').textContent='Código QR inválido.';
+    return;
+  }
+  document.getElementById('title').textContent='Código '+code;
+  try{
+    const r = await fetch('./destinations.json?'+Date.now());
+    const data = await r.json();
+    const url = data[code];
+    if(url){
+      location.replace(url);
+    }else{
+      document.getElementById('msg').textContent='Este QR Code ainda não foi cadastrado. Cadastre o link do cliente no arquivo destinations.json.';
+    }
+  }catch(e){
+    document.getElementById('msg').textContent='Não foi possível carregar o cadastro. Tente novamente.';
+  }
+})();
+</script>
+</body>
+</html>
