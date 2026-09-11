@@ -1,0 +1,1 @@
+# QR-AVALIA-O
